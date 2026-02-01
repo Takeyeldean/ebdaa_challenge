@@ -557,18 +557,18 @@
 
         // delete existing service workers
         if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.getRegistrations().then(registrations => {
-    for (let reg of registrations) {
-      reg.unregister();
-    }
-  });
-}
+            navigator.serviceWorker.getRegistrations().then(registrations => {
+                for (let reg of registrations) {
+                    reg.unregister();
+                }
+            });
+        }
 
 
 
         // Kids data - 11 entries
         const kidsData = [
-            { name: "تقي الدين", emoji: "images/takey.jpg", balance: 1000 },
+            { name: "تقي الدين", emoji: "images/takey.jpg", balance: 1500 },
             { name: "أحمد", emoji: "images/ahmed.jpeg", balance: 850 },
             { name: "فاطمة", emoji: "🦋", balance: 1200 },
             { name: "محمد", emoji: "🦊", balance: 950 },
@@ -585,10 +585,13 @@
         function generateCards() {
             const cardsList = document.getElementById('cardsList');
 
-            kidsData.forEach((kid, index) => {
-                const card = document.createElement('div');
-                card.className = 'card';
-                card.innerHTML = `
+            kidsData
+                .sort((a, b) => b.balance - a.balance)
+                .forEach((kid, index) => {
+
+                    const card = document.createElement('div');
+                    card.className = 'card';
+                    card.innerHTML = `
                     <div class="header">
                         <h2>${kid.name}</h2>
                     </div>
@@ -619,8 +622,8 @@
                        
                     </div>
                 `;
-                cardsList.appendChild(card);
-            });
+                    cardsList.appendChild(card);
+                });
         }
 
         // Initialize stars
