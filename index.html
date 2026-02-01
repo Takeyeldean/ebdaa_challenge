@@ -272,20 +272,23 @@
                 margin-bottom: 0.5rem;
             }
 
-            .score-display {
-                display: flex;
-                align-items: baseline;
-                gap: 0.5rem;
-                justify-content: flex-end;
-            }
+           .score-display {
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+            justify-content: flex-end;
+        }
 
-            .score {
-                font-size: 2rem;
-                font-weight: 900;
-                color: white;
-                text-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-                animation: pulse-glow 2s ease-in-out infinite;
-            }
+        .score {
+            font-size: 2.2rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #f59e0b, #ec4899, #8b5cf6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: score-pulse 2s ease-in-out infinite;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+        }
 
             .points-label {
                 font-size: 0.8rem;
