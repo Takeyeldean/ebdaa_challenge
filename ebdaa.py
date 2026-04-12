@@ -1,7 +1,7 @@
 import subprocess
 import os
 
-PROJECT_PATH = "/home/taqieldein/ebdaa"
+PROJECT_PATH = "/home/taqialdin/ebdaa_challenge"
 COUNTER_FILE = "counter.txt"
 
 # لو ملف العداد مش موجود، أنشئه وابدأ من 1
