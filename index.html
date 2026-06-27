@@ -1,38 +1,126 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <title>مسابقة إبداع</title>
     <style>
-        /* Added Outfit font for numbers to make them look more premium */
         @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Outfit:wght@600;700;900&display=swap');
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            /* Deepened the dark background for better contrast */
-            --bg-dark:    #07080d;
-            /* Translucent card backgrounds for glassmorphism */
+            /* 🌙 Dark Theme (Default) */
+            --bg-main:    #07080d;
             --bg-card:    rgba(21, 24, 40, 0.65);
+            --bg-card-hover: rgba(28, 32, 53, 0.8);
             --bg-card2:   rgba(28, 32, 53, 0.8);
+            
             --neon-blue:  #00d4ff;
             --neon-green: #39ff9a;
             --neon-pink:  #ff2d78;
+            
             --gold:       #ffd700;
             --silver:     #e2e8f0;
             --bronze:     #f59e0b;
+            
             --text-main:  #ffffff;
             --text-dim:   #94a3b8;
+            
+            --grid-color: rgba(0, 212, 255, 0.05);
+            --blob-1:     rgba(0, 212, 255, 0.15);
+            --blob-2:     rgba(57, 255, 154, 0.12);
+            --blob-3:     rgba(255, 45, 120, 0.10);
+            
+            --h1-bg:      linear-gradient(90deg, #fff, #c0c8d8);
+            --h1-shadow:  rgba(0, 212, 255, 0.2);
+            
+            --card-border: rgba(0, 212, 255, 0.1);
+            --card-border-hover: rgba(0, 212, 255, 0.4);
+            --card-shadow-hover: rgba(0, 212, 255, 0.15);
+            
+            --badge-bg:   rgba(255, 255, 255, 0.03);
+            --badge-border: rgba(255, 255, 255, 0.08);
+            --badge-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.05);
+            
+            --avatar-border: rgba(0, 212, 255, 0.3);
+            --avatar-shadow: rgba(0, 0, 0, 0.3);
+            
+            --label-bg:   rgba(255, 255, 255, 0.05);
+            --label-border: rgba(255, 255, 255, 0.05);
+            
+            --footer-bg:  rgba(0, 0, 0, 0.2);
+            --footer-border: rgba(255, 255, 255, 0.03);
+            
+            --track-bg:   rgba(255, 255, 255, 0.05);
+            --track-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+            
+            --score-num-1: linear-gradient(135deg, #ffd700, #fffbe6);
+            --score-num-2: linear-gradient(135deg, #e2e8f0, #fff);
+            --score-num-3: linear-gradient(135deg, #f59e0b, #ffd4b0);
+            --score-num-other: linear-gradient(135deg, #fff, #94a3b8);
+        }
+
+        [data-theme="light"] {
+            /* ☀️ Light Theme */
+            --bg-main:    #f8fafc;
+            --bg-card:    rgba(255, 255, 255, 0.7);
+            --bg-card-hover: rgba(255, 255, 255, 0.95);
+            --bg-card2:   rgba(241, 245, 249, 0.9);
+            
+            --neon-blue:  #0ea5e9;
+            --neon-green: #10b981;
+            --neon-pink:  #e11d48;
+            
+            --gold:       #d97706;
+            --silver:     #64748b;
+            --bronze:     #b45309;
+            
+            --text-main:  #0f172a;
+            --text-dim:   #475569;
+            
+            --grid-color: rgba(2, 132, 199, 0.08);
+            --blob-1:     rgba(2, 132, 199, 0.15);
+            --blob-2:     rgba(5, 150, 105, 0.12);
+            --blob-3:     rgba(225, 29, 72, 0.10);
+            
+            --h1-bg:      linear-gradient(90deg, #0f172a, #334155);
+            --h1-shadow:  rgba(2, 132, 199, 0.2);
+            
+            --card-border: rgba(15, 23, 42, 0.1);
+            --card-border-hover: rgba(2, 132, 199, 0.4);
+            --card-shadow-hover: rgba(2, 132, 199, 0.2);
+            
+            --badge-bg:   rgba(0, 0, 0, 0.03);
+            --badge-border: rgba(0, 0, 0, 0.08);
+            --badge-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+            
+            --avatar-border: rgba(2, 132, 199, 0.3);
+            --avatar-shadow: rgba(0, 0, 0, 0.1);
+            
+            --label-bg:   rgba(0, 0, 0, 0.05);
+            --label-border: rgba(0, 0, 0, 0.05);
+            
+            --footer-bg:  rgba(0, 0, 0, 0.03);
+            --footer-border: rgba(0, 0, 0, 0.05);
+            
+            --track-bg:   rgba(0, 0, 0, 0.08);
+            --track-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.5);
+            
+            --score-num-1: linear-gradient(135deg, #d97706, #fcd34d);
+            --score-num-2: linear-gradient(135deg, #475569, #94a3b8);
+            --score-num-3: linear-gradient(135deg, #b45309, #fcd34d);
+            --score-num-other: linear-gradient(135deg, #0f172a, #475569);
         }
 
         body {
             font-family: 'Cairo', sans-serif;
-            background: var(--bg-dark);
+            background: var(--bg-main);
             min-height: 100vh;
             overflow-x: hidden;
             color: var(--text-main);
+            transition: background 0.3s ease, color 0.3s ease;
         }
 
         /* ── grid bg ── */
@@ -41,17 +129,17 @@
             position: fixed;
             inset: 0;
             background-image:
-                linear-gradient(rgba(0,212,255,.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0,212,255,.05) 1px, transparent 1px);
+                linear-gradient(var(--grid-color) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
             background-size: 40px 40px;
             pointer-events: none;
             z-index: 0;
-            /* Added a mask to fade out the grid at the edges */
             mask-image: radial-gradient(circle at center top, black 30%, transparent 100%);
             -webkit-mask-image: radial-gradient(circle at center top, black 30%, transparent 100%);
+            transition: background-image 0.3s ease;
         }
 
-        /* ── glow blobs (Added subtle animations) ── */
+        /* ── glow blobs ── */
         .blob {
             position: fixed;
             border-radius: 50%;
@@ -59,15 +147,50 @@
             pointer-events: none;
             z-index: 0;
             animation: blob-float 20s infinite alternate ease-in-out;
+            transition: background 0.3s ease;
         }
-        .blob-1 { width:450px;height:450px;background:rgba(0,212,255,.15);top:-100px;right:-100px; }
-        .blob-2 { width:400px;height:400px;background:rgba(57,255,154,.12);bottom:-100px;left:-100px; animation-delay: -5s; }
-        .blob-3 { width:300px;height:300px;background:rgba(255,45,120,.10);top:40%;left:50%;transform:translate(-50%,-50%); animation-delay: -10s; }
+        .blob-1 { width:450px;height:450px;background:var(--blob-1);top:-100px;right:-100px; }
+        .blob-2 { width:400px;height:400px;background:var(--blob-2);bottom:-100px;left:-100px; animation-delay: -5s; }
+        .blob-3 { width:300px;height:300px;background:var(--blob-3);top:40%;left:50%;transform:translate(-50%,-50%); animation-delay: -10s; }
 
         @keyframes blob-float {
             0% { transform: translate(0, 0) scale(1); }
             100% { transform: translate(40px, -60px) scale(1.1); }
         }
+
+        /* ── theme toggle ── */
+        .theme-toggle {
+            position: absolute;
+            top: 1.5rem;
+            left: 1.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--card-border);
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-main);
+            cursor: pointer;
+            z-index: 100;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        .theme-toggle:hover {
+            transform: scale(1.1);
+            border-color: var(--card-border-hover);
+            box-shadow: 0 0 15px var(--card-shadow-hover);
+        }
+        .theme-toggle svg {
+            width: 20px;
+            height: 20px;
+            transition: all 0.3s ease;
+        }
+        .theme-toggle .moon-icon { display: none; }
+        [data-theme="light"] .theme-toggle .moon-icon { display: block; }
+        [data-theme="light"] .theme-toggle .sun-icon { display: none; }
 
         /* ── header ── */
         .page-header {
@@ -81,11 +204,12 @@
             font-size: 3rem;
             font-weight: 900;
             letter-spacing: 1px;
-            background: linear-gradient(90deg, #fff, #c0c8d8);
+            background: var(--h1-bg);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            text-shadow: 0 10px 30px rgba(0,212,255,0.2);
+            text-shadow: 0 10px 30px var(--h1-shadow);
+            transition: text-shadow 0.3s ease;
         }
         .page-header .subtitle {
             font-family: 'Outfit', sans-serif;
@@ -94,6 +218,7 @@
             margin-top: .5rem;
             letter-spacing: 4px;
             font-weight: 700;
+            transition: color 0.3s ease;
         }
 
         /* ── divider ── */
@@ -107,7 +232,7 @@
             position: relative;
             z-index: 10;
         }
-        .divider-line { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, rgba(0,212,255,0.5), transparent); }
+        .divider-line { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--neon-blue), transparent); opacity: 0.5; }
         .divider-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--neon-blue); box-shadow: 0 0 12px var(--neon-blue), 0 0 24px var(--neon-blue); }
 
         /* ── cards ── */
@@ -124,11 +249,10 @@
 
         .card {
             background: var(--bg-card);
-            /* Added glassmorphism blur */
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-radius: 20px;
-            border: 1px solid rgba(0,212,255,.1);
+            border: 1px solid var(--card-border);
             overflow: hidden;
             transition: all .3s cubic-bezier(0.25, 0.8, 0.25, 1);
             position: relative;
@@ -136,21 +260,21 @@
         
         .card:hover {
             transform: translateY(-6px) scale(1.02);
-            border-color: rgba(0,212,255,.4);
-            box-shadow: 0 15px 40px rgba(0,212,255,.15);
-            background: rgba(28, 32, 53, 0.8);
+            border-color: var(--card-border-hover);
+            box-shadow: 0 15px 40px var(--card-shadow-hover);
+            background: var(--bg-card-hover);
         }
 
         /* rank glow for top 3 */
         .card.rank-1 { border-color: rgba(255,215,0,.4);  box-shadow: 0 5px 30px rgba(255,215,0,.1); }
-        .card.rank-2 { border-color: rgba(226,232,240,.3); box-shadow: 0 5px 25px rgba(226,232,240,.05); }
+        .card.rank-2 { border-color: rgba(148,163,184,.3); box-shadow: 0 5px 25px rgba(148,163,184,.05); }
         .card.rank-3 { border-color: rgba(245,158,11,.3);  box-shadow: 0 5px 25px rgba(245,158,11,.05); }
         
-        .card.rank-1:hover { border-color: rgba(255,215,0,.8); box-shadow: 0 15px 50px rgba(255,215,0,.2); }
-        .card.rank-2:hover { border-color: rgba(226,232,240,.6); box-shadow: 0 15px 40px rgba(226,232,240,.15); }
-        .card.rank-3:hover { border-color: rgba(245,158,11,.6); box-shadow: 0 15px 40px rgba(245,158,11,.15); }
+        .card.rank-1:hover { border-color: var(--gold); box-shadow: 0 15px 50px rgba(255,215,0,.2); }
+        .card.rank-2:hover { border-color: var(--silver); box-shadow: 0 15px 40px rgba(148,163,184,.15); }
+        .card.rank-3:hover { border-color: var(--bronze); box-shadow: 0 15px 40px rgba(245,158,11,.15); }
 
-        /* ── side stripe instead of top stripe for a modern look ── */
+        /* ── side stripe ── */
         .card-stripe {
             position: absolute;
             right: 0; top: 0; bottom: 0;
@@ -159,9 +283,9 @@
             transition: width 0.3s;
         }
         .card:hover .card-stripe { width: 8px; }
-        .card.rank-1 .card-stripe { background: linear-gradient(180deg, #ffd700, #fffbe6, #ffd700); }
-        .card.rank-2 .card-stripe { background: linear-gradient(180deg, #e2e8f0, #fff, #e2e8f0); }
-        .card.rank-3 .card-stripe { background: linear-gradient(180deg, #f59e0b, #ffd4b0, #f59e0b); }
+        .card.rank-1 .card-stripe { background: linear-gradient(180deg, var(--gold), #fffbe6, var(--gold)); }
+        .card.rank-2 .card-stripe { background: linear-gradient(180deg, var(--silver), #fff, var(--silver)); }
+        .card.rank-3 .card-stripe { background: linear-gradient(180deg, var(--bronze), #ffd4b0, var(--bronze)); }
 
         /* ── card body ── */
         .card-body {
@@ -183,32 +307,33 @@
             font-size: 1.3rem;
             font-weight: 900;
             flex-shrink: 0;
-            background: rgba(255,255,255,0.03);
+            background: var(--badge-bg);
             color: var(--text-dim);
-            border: 1px solid rgba(255,255,255,.08);
-            box-shadow: inset 0 2px 4px rgba(255,255,255,0.05);
+            border: 1px solid var(--badge-border);
+            box-shadow: var(--badge-shadow);
+            transition: all 0.3s ease;
         }
         .rank-badge.gold   { background:rgba(255,215,0,.15);   color:var(--gold);    border-color:rgba(255,215,0,.5);   box-shadow:0 0 15px rgba(255,215,0,.3); }
-        .rank-badge.silver { background:rgba(226,232,240,.1);  color:var(--silver);  border-color:rgba(226,232,240,.4); box-shadow:0 0 15px rgba(226,232,240,.15); }
+        .rank-badge.silver { background:rgba(148,163,184,.1);  color:var(--silver);  border-color:rgba(148,163,184,.4); box-shadow:0 0 15px rgba(148,163,184,.15); }
         .rank-badge.bronze { background:rgba(245,158,11,.15);  color:var(--bronze);  border-color:rgba(245,158,11,.4);  box-shadow:0 0 15px rgba(245,158,11,.15); }
 
-        /* avatar - Changed to fully round */
+        /* avatar */
         .avatar {
             width: 65px;
             height: 65px;
             border-radius: 50%;
             overflow: hidden;
             flex-shrink: 0;
-            border: 2px solid rgba(0,212,255,.3);
+            border: 2px solid var(--avatar-border);
             background: var(--bg-card2);
             position: relative;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            transition: transform 0.3s;
+            box-shadow: 0 4px 10px var(--avatar-shadow);
+            transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
         }
         .card:hover .avatar { transform: scale(1.08); }
-        .card.rank-1 .avatar { border-color: rgba(255,215,0,.8); box-shadow: 0 0 20px rgba(255,215,0,.4); }
-        .card.rank-2 .avatar { border-color: rgba(226,232,240,.6); }
-        .card.rank-3 .avatar { border-color: rgba(245,158,11,.6); }
+        .card.rank-1 .avatar { border-color: var(--gold); box-shadow: 0 0 20px rgba(255,215,0,.4); }
+        .card.rank-2 .avatar { border-color: var(--silver); }
+        .card.rank-3 .avatar { border-color: var(--bronze); }
         .avatar img { width:100%; height:100%; object-fit:cover; }
 
         /* info */
@@ -226,11 +351,11 @@
             font-size: .75rem;
             color: var(--text-dim);
             letter-spacing: .5px;
-            background: rgba(255,255,255,.05);
+            background: var(--label-bg);
             display: inline-block;
             padding: .2rem .6rem;
             border-radius: 20px;
-            border: 1px solid rgba(255,255,255,.05);
+            border: 1px solid var(--label-border);
             align-self: flex-start;
         }
 
@@ -248,14 +373,15 @@
             font-weight: 900;
             line-height: 1;
             display: block;
-            background: linear-gradient(135deg, #fff, #94a3b8);
+            background: var(--score-num-other);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        .card.rank-1 .score-num { background: linear-gradient(135deg, #ffd700, #fffbe6); -webkit-background-clip:text; background-clip:text; }
-        .card.rank-2 .score-num { background: linear-gradient(135deg, #e2e8f0, #fff); -webkit-background-clip:text; background-clip:text; }
-        .card.rank-3 .score-num { background: linear-gradient(135deg, #f59e0b, #ffd4b0); -webkit-background-clip:text; background-clip:text; }
+        .card.rank-1 .score-num { background: var(--score-num-1); -webkit-background-clip:text; background-clip:text; }
+        .card.rank-2 .score-num { background: var(--score-num-2); -webkit-background-clip:text; background-clip:text; }
+        .card.rank-3 .score-num { background: var(--score-num-3); -webkit-background-clip:text; background-clip:text; }
+        
         .score-unit {
             font-family: 'Outfit', sans-serif;
             font-size: .75rem;
@@ -271,20 +397,20 @@
         /* ── scanline bar ── */
         .card-footer-bar {
             height: 32px;
-            background: rgba(0,0,0,0.2);
+            background: var(--footer-bg);
             display: flex;
             align-items: center;
             padding: 0 1.5rem;
             gap: 1rem;
-            border-top: 1px solid rgba(255,255,255,.03);
+            border-top: 1px solid var(--footer-border);
         }
         .progress-track {
             flex: 1;
             height: 6px;
-            background: rgba(255,255,255,.05);
+            background: var(--track-bg);
             border-radius: 99px;
             overflow: hidden;
-            box-shadow: inset 0 1px 3px rgba(0,0,0,0.5);
+            box-shadow: var(--track-shadow);
         }
         .progress-fill {
             height: 100%;
@@ -301,9 +427,9 @@
             background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
             animation: shimmer 2s infinite;
         }
-        .card.rank-1 .progress-fill { background: linear-gradient(90deg, #d97706, #ffd700); }
-        .card.rank-2 .progress-fill { background: linear-gradient(90deg, #94a3b8, #e2e8f0); }
-        .card.rank-3 .progress-fill { background: linear-gradient(90deg, #b45309, #f59e0b); }
+        .card.rank-1 .progress-fill { background: linear-gradient(90deg, #d97706, var(--gold)); }
+        .card.rank-2 .progress-fill { background: linear-gradient(90deg, #94a3b8, var(--silver)); }
+        .card.rank-3 .progress-fill { background: linear-gradient(90deg, #b45309, var(--bronze)); }
         
         .progress-pct {
             font-family: 'Outfit', sans-serif;
@@ -363,6 +489,25 @@
 </head>
 <body>
 
+<button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">
+    <!-- Sun icon for Dark Mode (to switch to Light Mode) -->
+    <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="5"></circle>
+        <line x1="12" y1="1" x2="12" y2="3"></line>
+        <line x1="12" y1="21" x2="12" y2="23"></line>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+        <line x1="1" y1="12" x2="3" y2="12"></line>
+        <line x1="21" y1="12" x2="23" y2="12"></line>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+    <!-- Moon icon for Light Mode (to switch to Dark Mode) -->
+    <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+    </svg>
+</button>
+
 <div class="blob blob-1"></div>
 <div class="blob blob-2"></div>
 <div class="blob blob-3"></div>
@@ -383,13 +528,32 @@
 <div class="cards-list" id="cardsList"></div>
 
 <script>
+// ── Theme Toggle Logic ──
+const themeToggle = document.getElementById('themeToggle');
+const rootElement = document.documentElement;
+
+// Check for saved theme preference or use system preference
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme) {
+    rootElement.setAttribute('data-theme', savedTheme);
+} else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+    rootElement.setAttribute('data-theme', 'light');
+}
+
+themeToggle.addEventListener('click', () => {
+    const currentTheme = rootElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    
+    rootElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+});
+
+
 const kidsData = [
     { name: "يوسف",       emoji: "images/youssef.jpg",      balance: 921 },
     { name: "ياسين",       emoji: "images/yasine.jpg",       balance: 745 },
     { name: "حمزة فتحي",  emoji: "images/hamza_fathy.jpg",  balance: 970 },
     { name: "محمود",      emoji: "images/mahmoud.jpg",      balance: 905 },
-
-
     { name: "أحمد",       emoji: "images/ahmed.jpg",        balance: 809 },
     { name: "يحي",        emoji: "images/yahya.jpg",        balance: 899 },
     { name: "عبد الرحمن", emoji: "images/abdulrahman.jpg",  balance: 966 },
@@ -410,7 +574,6 @@ function generateCards() {
     const maxScore = sorted[0].balance;
     const list = document.getElementById('cardsList');
 
-    // Default fallback icon if image isn't found
     const fallbackImage = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2394a3b8'%3E%3Cpath d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/%3E%3C/svg%3E`;
 
     sorted.forEach((kid, i) => {
@@ -445,7 +608,6 @@ function generateCards() {
         list.appendChild(card);
     });
 
-    // animate progress bars after paint
     requestAnimationFrame(() => {
         requestAnimationFrame(() => {
             document.querySelectorAll('.progress-fill').forEach(el => {
@@ -465,7 +627,6 @@ function generateParticles() {
         p.style.setProperty('--dur', (6 + Math.random()*8) + 's');
         p.style.setProperty('--del', (Math.random()*8) + 's');
         
-        // Add random horizontal drift
         const drift = (Math.random() * 60 - 30) + 'px';
         p.style.setProperty('--drift', drift);
         
